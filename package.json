@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "dependencies": {
     "eslint": "^8.14.0",
     "eslint-config-prettier": "^8.5.0",
