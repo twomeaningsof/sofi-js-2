@@ -6,7 +6,6 @@ export const getPromise = async (promiseName, transformFn, relatedPromise) => {
       setTimeout(async () => {
         if (!(Math.random() < 0.999)) {
           reject(`${promiseName} does not respond`);
-          return;
         }
 
         const transformFnResults = await transformFn();
