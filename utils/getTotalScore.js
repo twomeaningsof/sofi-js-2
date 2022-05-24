@@ -1,4 +1,7 @@
+import { pipe, map, reduce, add } from "ramda";
+
 export const getTotalScore = (team) =>
-  team
-    .map(({ score }) => score)
-    .reduce((previousScore, currentScore) => previousScore + currentScore);
+  pipe(
+    map(({ score }) => score),
+    reduce(add, 0)
+  )(team);

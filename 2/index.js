@@ -1,3 +1,4 @@
+import { map } from "ramda";
 import { getTeamName } from "../utils/getTeamName.js";
 import { getTotalScore } from "../utils/getTotalScore.js";
 import { getRandomPlayer } from "../utils/getRandomPlayer.js";
@@ -25,10 +26,10 @@ const getTeamSummaries = async (teams) =>
   await getPromise(
     "getTeamSummaries",
     () =>
-      teams.map((team) => ({
+      map((team) => ({
         name: getTeamName(team),
         averageScore: Math.round(getTotalScore(team) / team.length),
-      })),
+      }))(teams),
     "getTeams"
   );
 
