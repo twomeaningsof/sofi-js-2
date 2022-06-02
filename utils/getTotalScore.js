@@ -1,7 +1,4 @@
-import { pipe, map, reduce, add } from "ramda";
+import { pipe, map, reduce, add, props } from "ramda";
 
 export const getTotalScore = (team) =>
-  pipe(
-    map(({ score }) => score),
-    reduce(add, 0)
-  )(team);
+  pipe(map(props(["score"])), reduce(add, 0))(team);

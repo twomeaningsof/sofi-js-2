@@ -1,10 +1,10 @@
-import { pipe, map, reduce } from "ramda";
+import { pipe, map, reduce, concat, props } from "ramda";
 
 export const getNamesArray = (data) =>
   pipe(
-    map((team) => map(({ name }) => name, team)),
+    map((team) => map(props(["name"]), team)),
     reduce(
-      (previousArray, currentArray) => previousArray.concat(currentArray),
+      (previousArray, currentArray) => concat(previousArray, currentArray),
       []
     )
   )(data);

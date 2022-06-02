@@ -1,12 +1,7 @@
-import { pipe, map, reduce, slice } from "ramda";
+import { pipe, map, reduce, slice, props } from "ramda";
 
-const addTeamMate = (previousName, currentName) => {
-  return `${previousName} ${currentName}`;
-};
+const addTeamMate = (previousName, currentName) =>
+  `${previousName} ${currentName}`;
 
 export const getTeamName = (team) =>
-  pipe(
-    map(({ name }) => name),
-    reduce(addTeamMate, "Team"),
-    slice(0, -1)
-  )(team);
+  pipe(map(props(["name"])), reduce(addTeamMate, "Team"), slice(0, -1))(team);
