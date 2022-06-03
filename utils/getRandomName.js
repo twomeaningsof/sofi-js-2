@@ -1,8 +1,10 @@
-import { pipe, always } from "ramda";
+import { pipe, length, subtract, prop, __ } from "ramda";
 import { getRandomNumber } from "./getRandomNumber.js";
 
 export const getRandomName = (namesArray) =>
   pipe(
-    always(getRandomNumber(0, namesArray.length - 1)),
-    (nameIndex) => namesArray[nameIndex]
+    length,
+    subtract(__, 1),
+    getRandomNumber(0, __),
+    prop(__, namesArray)
   )(namesArray);
